@@ -1,9 +1,16 @@
+export enum EConstraintsType {
+    isMandatory = 'isMandatory',
+    minSize = 'minSize',
+    maxSize = 'maxSize',
+    regexp = 'regexp'
+}
+
 export interface AbstractConstraint {
-    isMandatory: boolean
+    [EConstraintsType.isMandatory]: boolean
 }
 
 export interface IStringConstraint extends AbstractConstraint{
-    sizeMin?: number,
-    sizeMax?: number,
-    regexp?: string
+    [EConstraintsType.minSize]?: number,
+    [EConstraintsType.maxSize]?: number,
+    [EConstraintsType.regexp]?: string
 }
