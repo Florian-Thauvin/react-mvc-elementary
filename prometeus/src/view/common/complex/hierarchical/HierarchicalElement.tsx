@@ -1,5 +1,5 @@
 import React from 'react';
-import LineTo from 'react-lineto';
+import SteppedLineTo from 'react-lineto';
 
 import Avatar from '@material-ui/core/Avatar';
 
@@ -10,6 +10,13 @@ interface inputProps {
     onClick?: (element: IHierarchicalElement) => void;
 }
 
+const lineStyle = {
+    delay: true,
+    borderColor: '#200',
+    borderStyle: 'solid',
+    borderWidth: 3
+}
+
 function HierarchicalElement(props: inputProps): JSX.Element {
 
     const { element, onClick } = props;
@@ -18,7 +25,7 @@ function HierarchicalElement(props: inputProps): JSX.Element {
         <>
             {
                 element.parent ? 
-                    <LineTo from = {element.parent.key} to = {element.key} borderWidth={3}></LineTo> 
+                    <SteppedLineTo from = {element.parent.key} to = {element.key} fromAnchor="bottom" toAnchor="top" {...lineStyle}/> 
                     : <p>pas de ligne</p>
             }
             <Avatar 

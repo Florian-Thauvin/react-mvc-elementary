@@ -4,7 +4,10 @@ import HierarchicalElement from './HierarchicalElement';
 
 type onClickDefinition = (element: IHierarchicalElement) => void;
 
-const defaultStyle: React.CSSProperties = {display: 'flex', alignItems: 'center'};
+const defaultStyle: React.CSSProperties = {
+    display: 'flex', 
+    alignItems: 'center'
+};
 
 interface inputProps {
     elements: IHierarchicalElement[];

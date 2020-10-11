@@ -1,4 +1,5 @@
 import React from 'react';
+import SteppedLineTo from 'react-lineto';
 import { IPersonneField, createField } from './model/specific/Personne';
 import PrometeusWidgetHierarchical, { IHierarchicalElement } from './view/common/complex/hierarchical/PrometeusWidgetHierarchical';
 import PrometeusWidgetTextInput from './view/common/elementary/PrometeusWidgetTextInput';
@@ -39,6 +40,9 @@ function Home() {
   const hierarchicalElements: Array<IHierarchicalElement> = [
     Rick, Vador, Punisher, Bender
   ]
+
+  //<PrometeusWidgetTextInput field={personne.nom}></PrometeusWidgetTextInput>
+  //<PrometeusWidgetHierarchical elements = {hierarchicalElements} onClick = {(e: IHierarchicalElement) => console.log(e)}></PrometeusWidgetHierarchical>
 
   return (
     <div>
