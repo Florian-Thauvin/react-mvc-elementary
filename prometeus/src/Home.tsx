@@ -1,6 +1,6 @@
 import React from 'react';
 import { IPersonneField, createField } from './model/specific/Personne';
-import PrometeusWidgetTextInput from './view/common/PrometeusWidgetTextInput';
+import PrometeusWidgetTextInput from './view/common/elementary/PrometeusWidgetTextInput';
 
 function Home() {
   const personne: IPersonneField = createField();

@@ -28,11 +28,11 @@ export default function isValid(constraint: IStringConstraint, value: string | u
 }
 
 function isMinSizeValid(minSize: number | undefined, value: string): boolean {
-    return minSize ? value.length > minSize : true;
+    return minSize ? value.length >= minSize : true;
 }
 
 function isMaxSizeValid(maxSize: number | undefined, value: string): boolean {
-    return maxSize ? value.length < maxSize : true;
+    return maxSize ? value.length <= maxSize : true;
 }
 
 function isRegexpValid(regexp: string | undefined, value: string): boolean {

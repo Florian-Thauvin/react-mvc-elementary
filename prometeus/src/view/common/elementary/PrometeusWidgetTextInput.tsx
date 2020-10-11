@@ -1,11 +1,13 @@
-import React, { FormEvent, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 
-import * as ModelField from '../../model/common/ModelField';
-import isValid from '../../utils/validation/StringValidation';
-import { EConstraintsType } from '../../model/common/ModelConstraints';
+import ErrorForm from '../generics/ErrorForm';
 
-export interface inputProps {
+import * as ModelField from '../../../model/common/ModelField';
+import isValid from '../../../utils/validation/StringValidation';
+import { EConstraintsType } from '../../../model/common/ModelConstraints';
+
+interface inputProps {
     field: ModelField.IStringField
 }
 
@@ -32,6 +34,7 @@ function PrometeusWidgetTextInput(props: inputProps): JSX.Element {
                 type = {field.inputType ? field.inputType : 'text'}
                 defaultValue = {value}
                 onChange = {(e : React.ChangeEvent<HTMLInputElement>) => {setValue(e.target.value)}}
+                helperText = { ErrorForm({errors}) }
             />
         </>
     );
