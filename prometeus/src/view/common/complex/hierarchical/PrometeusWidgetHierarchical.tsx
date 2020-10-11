@@ -3,7 +3,8 @@ import React from 'react';
 import HierarchicalElement from './HierarchicalElement';
 
 type onClickDefinition = (element: IHierarchicalElement) => void;
-const defaultStyle:React.CSSProperties = {display: 'flex', alignItems: 'center'};
+
+const defaultStyle: React.CSSProperties = {display: 'flex', alignItems: 'center'};
 
 interface inputProps {
     elements: IHierarchicalElement[];
@@ -33,8 +34,8 @@ function findRootParents(elements: Array<IHierarchicalElement>): Array<IHierarch
 
 function displayChildrens(parent: IHierarchicalElement, onClick?: onClickDefinition): JSX.Element {
     return (
-        <div key = { parent.key } style={{...defaultStyle, flexDirection: 'column'}} >
-            <HierarchicalElement key = { parent.key } element = { parent } onClick = { onClick } />
+        <div key = { parent.key } style={{...defaultStyle, flexDirection: 'column'}} className = {parent.key}>
+            <HierarchicalElement key = { parent.key } element = { parent } onClick = { onClick }/>
             {
                 parent.childrens ? (
                     <div style={{...defaultStyle, flexDirection: 'row'}}>
