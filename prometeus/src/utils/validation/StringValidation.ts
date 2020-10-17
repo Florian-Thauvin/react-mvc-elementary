@@ -1,7 +1,6 @@
 import { EConstraintsType, IStringConstraint } from '../../model/common/ModelConstraints';
 
-
-export default function isValid(constraint: IStringConstraint, value: string | undefined): Array<EConstraintsType> {
+export function isValid(constraint: IStringConstraint, value: string | undefined): Array<EConstraintsType> {
     let {minSize, maxSize, regexp} = constraint;
 
     let errors: Array<EConstraintsType> = [];

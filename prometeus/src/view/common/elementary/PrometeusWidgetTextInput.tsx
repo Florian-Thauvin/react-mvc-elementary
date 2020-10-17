@@ -4,7 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import ErrorForm from '../generics/ErrorForm';
 
 import * as ModelField from '../../../model/common/ModelField';
-import isValid from '../../../utils/validation/StringValidation';
+import { isValid } from '../../../utils/validation/StringValidation';
 import { EConstraintsType } from '../../../model/common/ModelConstraints';
 
 interface inputProps {
