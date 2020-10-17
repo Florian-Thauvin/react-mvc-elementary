@@ -5,7 +5,7 @@ export const personne: IPersonneField = createField();
 
 export const personneFieldList: Array<IPersonneField> = [
   {
-    ...createField('totota', 'manual'),
+    ...createField('totota', 'maniol'),
   },   {
     ...createField('tatata', 'manual'),
   },   {

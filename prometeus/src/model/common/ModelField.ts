@@ -11,10 +11,24 @@ export interface IModelField extends ModelObject.IModelObject {
     value?: any
 }
 
+export enum EStringInputType {
+    DATE = 'date',
+    DATETIME = 'datetime-local',
+    EMAIL = 'email',
+    FILE = 'file',
+    NUMBER = 'number',
+    PASSWORD = 'password',
+    SEARCH = 'search',
+    TEL = 'tel',
+    TEXT = 'text',
+    TIME = 'time',
+    URL = 'url'
+}
+
 export interface IStringField extends IModelField {
     constraints: Constraints.IStringConstraint,
     defaultValue?: string,
-    inputType: string,
+    inputType: EStringInputType,
     value?: string
 }
 

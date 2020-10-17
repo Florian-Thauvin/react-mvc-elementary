@@ -8,8 +8,9 @@ import { isValid } from '../../../utils/validation/StringValidation';
 import { EConstraintsType } from '../../../model/common/ModelConstraints';
 
 interface inputProps {
-    field: ModelField.IStringField
-}
+    field: ModelField.IStringField,
+    onChange?: (event : React.ChangeEvent<HTMLInputElement>) => void
+ }
 
 function PrometeusWidgetTextInput(props: inputProps): JSX.Element {
     
@@ -21,7 +22,6 @@ function PrometeusWidgetTextInput(props: inputProps): JSX.Element {
 
     useEffect(() => {
         setErrors(isValid(constraints, value));
-        console.log(`New value detected: ${value}, errors: ${errors}`);
     }, [value]);
 
     return (
@@ -33,7 +33,7 @@ function PrometeusWidgetTextInput(props: inputProps): JSX.Element {
                 id = {`${field.key}_value`} 
                 type = {field.inputType ? field.inputType : 'text'}
                 defaultValue = {value}
-                onChange = {(e : React.ChangeEvent<HTMLInputElement>) => {setValue(e.target.value)}}
+                onChange = { props.onChange ? props.onChange : undefined }
                 helperText = { ErrorForm({errors}) }
             />
         </>

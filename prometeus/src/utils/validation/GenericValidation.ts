@@ -18,7 +18,6 @@ export default function isValid(object: IModelField): Array<EConstraintsType> {
         case EObjectType.PROMETEUS_OBJECT:
             getDeltaAttributes(object, defaultModelField).forEach((item: IModelField, key: string) => {
                 errors = errors.concat(item ? isValid(item.value) : []);
-                console.log("    item : " + key + ", " + errors);
             });
             break;
     } 

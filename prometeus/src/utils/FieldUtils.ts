@@ -35,3 +35,18 @@ export function getDeltaAttributes(objectToDisplay: IModelField, referenceObject
 
     return naturalKeys;
 }
+
+export function getValueFromFieldName(objectToDisplay: IModelField, fieldName: string): any{
+    const objectAttributes = Object.getOwnPropertyDescriptors(objectToDisplay);
+    let gettedItem: any = null;
+
+    for(const [key, value] of Object.entries(objectAttributes)) {
+        console.log(key)
+        if(key === fieldName){
+            gettedItem = value;
+            break;
+        }
+    }
+
+    return gettedItem.value;
+}

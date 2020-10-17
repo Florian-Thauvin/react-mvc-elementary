@@ -68,7 +68,7 @@ export function createField(nom?: string, prenom?: string, age?: number, email?:
 function createNomField(nom?: string): ModelField.IStringField{
     return {
         ...ModelField.createField(ModelObject.EObjectType.STRING, [{name : 'nom'}], 'personne'),
-        inputType: 'text',
+        inputType: ModelField.EStringInputType.TEXT,
         constraints: {
             isMandatory: true,
             minSize:5
@@ -80,7 +80,7 @@ function createNomField(nom?: string): ModelField.IStringField{
 function createPrenomField(prenom?: string): ModelField.IStringField{
     return {
         ...ModelField.createField(ModelObject.EObjectType.STRING, [{name : 'prenom'}], 'personne'),
-        inputType: 'text',
+        inputType:  ModelField.EStringInputType.TEXT,
         constraints: {
             isMandatory: false,
             maxSize: 10,
@@ -103,7 +103,7 @@ function createAgeField(age?: number): ModelField.INumericField{
 function createEmailField(email?: string): ModelField.IStringField{
     return {
         ...ModelField.createField(ModelObject.EObjectType.STRING, [{name : 'email'}], 'personne'),
-        inputType: 'mail',
+        inputType:  ModelField.EStringInputType.EMAIL,
         constraints: {
             isMandatory: false,
             maxSize: 10,
