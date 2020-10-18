@@ -41,7 +41,6 @@ export function getValueFromFieldName(objectToDisplay: IModelField, fieldName: s
     let gettedItem: any = null;
 
     for(const [key, value] of Object.entries(objectAttributes)) {
-        console.log(key)
         if(key === fieldName){
             gettedItem = value;
             break;

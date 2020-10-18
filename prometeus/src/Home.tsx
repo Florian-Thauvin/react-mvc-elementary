@@ -4,6 +4,8 @@ import PrometeusWidgetTable from './view/common/complex/array/PrometeusWidgetTab
 import PrometeusWidgetHierarchical from './view/common/complex/hierarchical/PrometeusWidgetHierarchical';
 import PrometeusWidgetTextInput from './view/common/elementary/PrometeusWidgetTextInput';
 
+import Avatar from '@material-ui/core/Avatar';
+
 import * as ModelSimulation from './ModelSimulation';
 
 function Home() {
@@ -15,7 +17,9 @@ function Home() {
   return (
     <div>
       <h1>Prometeus application test</h1>
-      <PrometeusWidgetTable model = {ModelSimulation.personneFieldList}/>
+      <PrometeusWidgetTable model = {ModelSimulation.personneFieldList} formulaireToOpen = {<Avatar 
+                src = {'/avatars/icons8-rick-sanchez-24.png'}
+            />}/>
    </div>
   );
 }

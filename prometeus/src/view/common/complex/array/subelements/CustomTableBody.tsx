@@ -1,20 +1,17 @@
 import React from 'react';
 import { defaultModelField, IModelField } from '../../../../../model/common/ModelField';
 
-import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
 
 import { getDeltaAttributes } from '../../../../../utils/FieldUtils';
 import { ITableItem } from '../PrometeusWidgetTable';
 
 interface inputProps {
     model: Array<ITableItem>,
-    headers: Array<string>
+    headers: Array<string>,
+    onSelection: (element: ITableItem) => void
 }
 
 function getOrderedRows(element: IModelField, headers: Array<string>): Array<IModelField> {
@@ -26,7 +23,16 @@ function getOrderedRows(element: IModelField, headers: Array<string>): Array<IMo
             rows.push(attributes.get(header));
         }
     });
+
     return rows;
+}
+
+function getValidStyle(isValid: boolean){
+    return isValid ? {backgroundColor: 'lightgreen'} : {backgroundColor: 'lightpink'};
+}
+
+function getSelectedStyle(isSelected: boolean){
+    return  isSelected ? {border: '5px solid blue'} : {border: ''}
 }
 
 function CustomTableBody(props: inputProps): JSX.Element {
@@ -36,19 +42,25 @@ function CustomTableBody(props: inputProps): JSX.Element {
         <TableBody>
             {
                 model.map((element: ITableItem) => {
-                    const { model, isValid } = element;
+                    const { model, isValid, isSelected } = element;
                     return (
-                        <TableRow key={model.key}> 
+                        <TableRow
+                            key={model.key}
+                            onClick={() => {props.onSelection(element)}}
+                            style = {
+                                {...getValidStyle(isValid), ...getSelectedStyle(isSelected)}                               
+                            }
+                        > 
                             {
                                 getOrderedRows(model, headers).map((item: IModelField, index: number) => {
                                     return (
                                         item ? 
                                             <TableCell 
                                                 key={`${model.key}_${index}`}
-                                                style = {isValid ? {backgroundColor: 'blue'} : {backgroundColor: 'red'}}>
-                                                    {item.value.value}
+                                            >
+                                                {item.value.value}
                                             </TableCell>
-                                            :  <TableCell key={`${model.key}_${index}`}></TableCell>
+                                        :  <TableCell key={`${model.key}_${index}`}></TableCell>
                                     );
                                 })
                             }

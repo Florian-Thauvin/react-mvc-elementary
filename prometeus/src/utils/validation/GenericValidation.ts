@@ -1,5 +1,5 @@
 import { IModelField, defaultModelField } from '../../model/common/ModelField';
-import { EObjectType, IModelObject } from '../../model/common/ModelObject';
+import { EObjectType } from '../../model/common/ModelObject';
 import { EConstraintsType } from '../../model/common/ModelConstraints';
 
 import { getDeltaAttributes } from '../../utils/FieldUtils';

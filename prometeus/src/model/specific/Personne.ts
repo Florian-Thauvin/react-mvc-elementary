@@ -1,6 +1,13 @@
 import * as ModelObject from '../common/ModelObject';
 import * as ModelField from '../common/ModelField';
 
+const Chance = require('chance');
+
+export function generate(): IPersonneField {
+    const chance = new Chance();
+    return createField(chance.last(), chance.first(), chance.age(), chance.email());
+}
+
 export interface IPersonne extends ModelObject.IModelObject {
     nom: string, 
     prenom: string,
@@ -19,7 +26,7 @@ function getDefaultNaturalKeys(nom?: string, prenom?: string){
     return {
         defaultNom: nom ? nom : 'nom',
         defaultPrenom: prenom ? prenom : 'prenom'
-    }
+    };
 }
 
 export function createObject(nom?: string, prenom?: string, age?: number, email?: string): IPersonne {
@@ -83,8 +90,7 @@ function createPrenomField(prenom?: string): ModelField.IStringField{
         inputType:  ModelField.EStringInputType.TEXT,
         constraints: {
             isMandatory: false,
-            maxSize: 10,
-            minSize: 5
+            maxSize: 15
         },
         value: prenom ? prenom : undefined
     };
@@ -105,9 +111,7 @@ function createEmailField(email?: string): ModelField.IStringField{
         ...ModelField.createField(ModelObject.EObjectType.STRING, [{name : 'email'}], 'personne'),
         inputType:  ModelField.EStringInputType.EMAIL,
         constraints: {
-            isMandatory: false,
-            maxSize: 10,
-            minSize: 5
+            isMandatory: false
         },
         value: email ? email : undefined
     };
