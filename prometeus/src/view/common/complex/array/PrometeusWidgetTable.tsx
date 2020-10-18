@@ -17,6 +17,7 @@ export interface inputProps {
     model: Array<IModelField>;
     headers?: Array<string>;
     formulaireToOpen?: JSX.Element;
+    setErrors: (errors: Array<EConstraintsType>) => void
 }
 
 export interface ITableItem{
@@ -27,13 +28,13 @@ export interface ITableItem{
 }
 
 function createTableItem(element: IModelField): ITableItem {
-    const errors: Array<EConstraintsType> = isValid(element);
+    const itemErrors: Array<EConstraintsType> = isValid(element);
 
     return {
         model: element,
         isSelected: false,
-        errors: errors,
-        isValid: errors.length === 0
+        errors: itemErrors,
+        isValid: itemErrors.length === 0
     };
 }
 
@@ -91,6 +92,19 @@ function PrometeusWidgetTable(props: inputProps): JSX.Element {
     useEffect(()=>{        
         setDisplayValues(generateDisplay(values, searchItem, search, sort, isAscending));
     }, [search, searchItem, values, sort, isAscending]);
+
+    useEffect(() => {
+        let errors: Array<EConstraintsType> = [];
+
+        values.forEach((element: ITableItem) => {
+            if(!element.isValid){
+                errors = errors.concat(element.errors);
+            }
+        });
+
+        props.setErrors(errors);
+        console.log(values)
+    }, [values]);
 
     function onAdd(element: IModelField){
         const newValue = [...values, createTableItem(element)];
