@@ -11,6 +11,7 @@ import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
 
 import * as ModelSimulation from './ModelSimulation';
+import Spooky from './view/display/spooky/Spooky';
 
 function Home() {
   //<PrometeusWidgetTextInput field={personne.nom}></PrometeusWidgetTextInput>
@@ -23,6 +24,7 @@ function Home() {
   return (
     <div>
       <h1>Prometeus application test</h1>
+      <Spooky></Spooky>
       <Button onClick={() => {console.log('Array errors: ', errors)}}>Display errors</Button>
       <PrometeusWidgetTable 
         model = {ModelSimulation.personneFieldList} 
